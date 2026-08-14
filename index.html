@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hackathon PRODlenka — 10–11 сентября</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛝</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Kalam:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#FF5A24;
+    --orange-deep:#F04A16;
+    --cream:#FDF3E6;
+    --cream-2:#FBEADB;
+    --ink:#1B1207;
+    --purple:#5B4CE0;
+    --purple-deep:#4638C4;
+    --purple-light:#E6E1FF;
+    --paper:#F6F1E4;
+    --green:#3FAE5B;
+    --font-bubble:'Baloo 2', sans-serif;
+    --font-hand:'Kalam', cursive;
+    --font-body:'Manrope', sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  section{position:relative;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 24px;}
+  .ph{
+    position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:6px; text-align:center; border:2px dashed rgba(27,18,7,0.35); border-radius:24px;
+    color:rgba(27,18,7,0.55); font-family:var(--font-body); font-weight:700; font-size:13px; padding:14px;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.5) 0 10px, rgba(255,255,255,0.15) 10px 20px);
+  }
+  .ph .ph-icon{font-size:34px; line-height:1;}
+  .ph .ph-cap{opacity:0.8; font-weight:600;}
+
+  /* ---------- header ---------- */
+  header{ position:sticky; top:0; z-index:50; background:rgba(253,243,230,0.92); backdrop-filter:blur(6px); border-bottom:1px solid rgba(27,18,7,0.08); }
+  header .wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .logo{ display:flex; align-items:center; }
+  .logo img{height:30px;}
+  nav.top-links{display:flex; gap:32px; font-weight:600; font-size:14.5px; letter-spacing:0.1px;}
+  nav.top-links a{opacity:0.62; transition:opacity .15s;}
+  nav.top-links a:hover{opacity:1;}
+  .burger{ width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; background:rgba(27,18,7,0.06); transition:background .15s; }
+  .burger:hover{background:rgba(27,18,7,0.1);}
+  .burger div{width:18px; height:1.6px; background:var(--ink); position:relative; border-radius:2px;}
+  .burger div::before,.burger div::after{content:'';position:absolute; left:0; width:18px; height:1.6px; background:var(--ink); border-radius:2px;}
+  .burger div::before{top:-5px;} .burger div::after{top:5px;}
+  @media (max-width:720px){ nav.top-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{ background:var(--orange); padding:40px 0 90px; border-radius:0 0 48px 48px; overflow:hidden; }
+  .hero .wrap{position:relative;}
+  .hero-tag{ position:absolute; top:-10px; left:0; width:110px; }
+  .hero-hackathon{ position:absolute; top:0px; right:0; width:230px; }
+  .hero-title-row{ margin-top:78px; text-align:center; position:relative; z-index:2; }
+  .hero-title-row img{ width:min(720px, 92%); margin:0 auto; }
+
+  .hero-visual{
+    position:relative; margin:-115px auto 0; max-width:640px; aspect-ratio:1440/1002; z-index:1;
+  }
+  .hero-visual img.frame{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+    opacity:0; transition:opacity .6s ease;
+  }
+  .hero-visual img.frame.show{opacity:1;}
+  .hero-highlight{ margin-top:8px; max-width:520px; position:relative; z-index:2; }
+  .hero-highlight p{
+    display:inline; font-family:var(--font-body); font-weight:800; font-size:clamp(20px,2.6vw,27px);
+    color:var(--purple-deep); background:#FFF3D6; box-decoration-break:clone; -webkit-box-decoration-break:clone;
+    padding:2px 8px; line-height:1.5;
+  }
+  .cta-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px; margin-top:24px; background:var(--purple); color:#fff;
+    font-weight:700; font-size:17px; padding:15px 38px; border-radius:40px; border:none;
+    box-shadow:0 10px 24px rgba(37,26,140,0.28); cursor:pointer; transition:transform .15s, box-shadow .15s;
+  }
+  .cta-btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(37,26,140,0.34);}
+
+  @media (max-width:640px){
+    .hero{padding-top:20px;}
+    .hero-tag{width:80px;}
+    .hero-hackathon{width:150px;}
+    .hero-title-row{margin-top:66px;}
+    .hero-visual{margin-top:-60px;}
+  }
+
+  /* ---------- bento info ---------- */
+  .bento{padding:60px 0 30px;}
+  .bento-visual{ position:relative; width:100%; aspect-ratio:2399/1223; margin-bottom:6px; }
+  .bento-visual img{ position:absolute; inset:0; width:100%; height:100%; }
+  .bento-visual .cell{ position:absolute; width:36%; color:#fff; }
+  .bento-visual .cell h3{ font-family:var(--font-bubble); font-size:clamp(14px,2vw,20px); margin-bottom:6px;}
+  .bento-visual .cell p{ font-size:clamp(11px,1.3vw,14px); opacity:0.92; font-weight:500;}
+  .bento-visual .cell.tl{top:10%; left:6%;}
+  .bento-visual .cell.tr{top:10%; right:6%; text-align:right;}
+  .bento-visual .cell.bl{top:53%; left:6%;}
+  .bento-visual .cell.br{top:53%; right:6%; text-align:right;}
+  .bento-simple{display:none;}
+  @media (max-width:700px){
+    .bento-visual{display:none;}
+    .bento-simple{display:block;}
+    .bento-simple .row{ background:var(--purple); border-radius:28px; padding:24px 24px; margin-bottom:18px; color:#fff; }
+    .bento-simple .row h3{ font-family:var(--font-bubble); font-size:18px; margin-bottom:6px;}
+    .bento-simple .row p{ font-size:14px; opacity:0.9; font-weight:500;}
+    .bento-simple .row + .row{margin-top:0;}
+    .bento-simple .pair > div:first-child{margin-bottom:16px;}
+  }
+
+  /* ---------- intro text + note ---------- */
+  .intro{padding:50px 0 70px;}
+  .intro-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;}
+  .intro-text p{margin-bottom:18px; font-size:16px;}
+  .intro-text mark{background:#FFD9B0; color:var(--ink); padding:0 4px; font-weight:700;}
+  .sticky-note{ position:relative; }
+  .sticky-note img.bg{width:100%; display:block;}
+  .sticky-note .content{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    padding:14% 16% 10%; font-family:var(--font-body); font-weight:700; font-size:clamp(14px,1.8vw,18px); line-height:1.45; text-align:left;
+  }
+  .sticky-note .circled{ border:2px solid var(--purple); border-radius:50%; padding:0 8px; white-space:nowrap; }
+  @media (max-width:800px){ .intro-grid{grid-template-columns:1fr;} }
+
+  /* ---------- shpargalka banner ---------- */
+  .banner-wrap{ display:flex; align-items:center; gap:22px; max-width:1000px; margin:0 auto; }
+  .banner-smiley{
+    width:52px; height:52px; border-radius:50%; border:2px solid var(--ink); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:24px;
+  }
+  .banner-note{
+    flex:1; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:2px;
+    padding:20px 34px; display:flex; align-items:center; justify-content:space-between; gap:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08); transform:rotate(-0.6deg);
+    font-family:var(--font-hand); font-weight:700; font-size:clamp(16px,2.4vw,24px);
+  }
+  .banner-note .hl{background:var(--purple-light); padding:2px 10px; border-radius:3px;}
+  .banner-note .arrow{font-size:28px; color:var(--purple); flex-shrink:0;}
+  @media (max-width:600px){ .banner-smiley{display:none;} }
+
+  /* ---------- findings (yard section) ---------- */
+  .findings{
+    background-image:url(assets/yard-bg.webp); background-size:cover; background-position:center;
+    padding:90px 0 100px; margin-top:60px; border-radius:48px 48px 0 0; position:relative;
+  }
+  .findings::before{ content:''; position:absolute; inset:0; background:rgba(30,15,5,0.18); border-radius:48px 48px 0 0; }
+  .findings .wrap{position:relative; z-index:2;}
+  .findings .title-tape{ position:relative; display:inline-block; width:min(380px,70vw); margin-bottom:50px; transform:rotate(-2deg); }
+  .findings .title-tape img.tape{ width:100%; display:block; }
+  .findings .title-tape img.title{ position:absolute; left:8%; top:12%; width:84%; }
+  .findings-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; position:relative; z-index:2; }
+  .finding-card{
+    position:relative; border-radius:2px; padding:24px 20px 22px; box-shadow:0 12px 24px rgba(0,0,0,0.3);
+    transform:rotate(var(--rot,0deg)); background:#F6F1E4;
+  }
+  .finding-card img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:2px; z-index:0; }
+  .finding-card .inner{position:relative; z-index:1;}
+  .finding-card:nth-child(1){--rot:-2deg;}
+  .finding-card:nth-child(2){--rot:1.5deg;}
+  .finding-card:nth-child(3){--rot:-1deg;}
+  .finding-card:nth-child(4){--rot:2deg;}
+  .finding-card .head{display:flex; align-items:flex-start; gap:10px; margin-bottom:12px;}
+  .finding-card .num{
+    display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%;
+    border:2px solid var(--purple); color:var(--purple); font-weight:700; font-family:var(--font-bubble); font-size:14px; flex-shrink:0; font-style:normal;
+  }
+  .finding-card h4{font-size:16px; font-weight:800; line-height:1.3; padding-top:2px;}
+  .finding-card p{font-size:13.5px; color:#3a2f22; font-weight:500;}
+  @media (max-width:980px){ .findings-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .findings-grid{grid-template-columns:1fr;} .finding-card{transform:none;} }
+
+  /* ---------- past projects ---------- */
+  .projects{ background:var(--orange); border-radius:48px; padding:90px 0; margin-bottom:60px; overflow:hidden; }
+  .projects .lookback{
+    color:#fff; font-family:var(--font-hand); font-weight:700; font-size:clamp(20px,3.2vw,32px); line-height:1.3;
+    max-width:520px; margin-bottom:56px; position:relative;
+  }
+  .projects .lookback u{text-decoration-thickness:3px;}
+  .projects .title-img{width:min(640px,100%); margin-bottom:16px;}
+  .projects .tape-sub{width:min(300px,60vw); margin-bottom:34px;}
+  .projects-scroll{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  .project-card{ background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 14px 30px rgba(0,0,0,0.18); display:flex; flex-direction:column; padding:14px; }
+  .img-placeholder{
+    aspect-ratio:4/3; border-radius:12px; background-color:#f4f4f4;
+    background-image:
+      linear-gradient(45deg, #e6e6e6 25%, transparent 25%),
+      linear-gradient(-45deg, #e6e6e6 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #e6e6e6 75%),
+      linear-gradient(-45deg, transparent 75%, #e6e6e6 75%);
+    background-size:18px 18px; background-position:0 0, 0 9px, 9px -9px, -9px 0px;
+  }
+  .project-card .body{padding:14px 4px 4px;}
+  .project-card .body p.desc{font-size:14px; font-weight:700; margin-bottom:8px; line-height:1.35; color:var(--ink);}
+  .project-card .body p.team{font-size:12.5px; font-style:italic; color:var(--purple-deep); font-weight:700;}
+  @media (max-width:980px){ .projects-scroll{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .projects-scroll{grid-template-columns:1fr;} }
+
+  /* ---------- steps ---------- */
+  .steps{
+    background-image:url(assets/paper-bg.webp); background-size:cover; background-position:center top;
+    background-color:#fff;
+    padding:80px 0 40px; margin-bottom:60px; position:relative;
+  }
+  .steps img.steps-title{width:min(420px,80vw); margin-bottom:56px;}
+  .steps-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:30px; position:relative; margin-bottom:10px;}
+  .step .head{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
+  .step h4{font-size:16px; font-weight:800;}
+  .step h4 a{color:var(--purple-deep); text-decoration:underline;}
+  .step p{font-size:13.5px; color:#4a4030; font-weight:500;}
+  .step .num{
+    width:34px; height:34px; border-radius:50%; background:var(--purple); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-family:var(--font-bubble); font-size:15px; flex-shrink:0;
+  }
+  .steps img.doodles{ display:block; width:100%; margin-top:20px; opacity:0.9; }
+  @media (max-width:980px){ .steps-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .steps-grid{grid-template-columns:1fr;} .steps img.doodles{margin-top:28px; opacity:0.85;} }
+
+  /* ---------- цу-е-фа ---------- */
+  .cuefa{ background:var(--orange); padding:80px 0; border-radius:48px; margin-bottom:60px; position:relative; overflow:hidden; }
+  .cuefa-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:40px; align-items:center;}
+  .cuefa img.title-cuefa{width:min(400px,90%); margin-bottom:18px;}
+  .cuefa .sub{font-weight:700; font-size:16px; max-width:280px; color:#fff5ec;}
+  .cuefa .arrow-wrap{margin-top:16px;}
+  .cuefa .arrow-wrap img{width:70px;}
+  .cuefa-hands-wrap img{width:100%;}
+  @media (max-width:800px){ .cuefa-grid{grid-template-columns:1fr;} }
+
+  /* ---------- garage / jury ---------- */
+  .garage{padding:80px 0;}
+  .garage-photo{ position:relative; border-radius:32px; overflow:hidden; }
+  .garage-photo img.bg{ width:100%; display:block; }
+  .garage-bubbles{ position:absolute; right:5%; top:14%; z-index:2; width:min(420px,42%); }
+  .garage-bubbles img.blob{ width:100%; display:block; }
+  .garage-bubbles .text{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-start; padding:8% 12%;
+    color:#fff; font-weight:600; font-size:clamp(11px,1.4vw,15px); line-height:1.35; gap:14%;
+  }
+  .garage-bubbles .text p:nth-child(2){ margin-left:14%; }
+  @media (max-width:800px){
+    .garage-bubbles{ position:relative; width:100%; margin-top:18px; }
+    .garage-bubbles .text{ padding:10% 14%; font-size:14px; }
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{
+    padding:90px 0; background-image:url(assets/notebook-bg.webp); background-size:cover; background-position:center;
+  }
+  .faq-tape{
+    display:inline-block; background:#3a3a3a; color:#fff; font-family:var(--font-bubble); font-weight:700; font-size:20px;
+    padding:12px 34px; border-radius:2px; transform:rotate(-2deg); margin-bottom:40px; box-shadow:0 6px 14px rgba(0,0,0,0.25);
+  }
+  .faq-item{ border-bottom:1px solid rgba(27,18,7,0.1); }
+  .faq-item button{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer; padding:18px 0;
+    display:flex; justify-content:flex-start; align-items:flex-start; gap:16px;
+    font-family:var(--font-body); font-weight:700; font-size:18px; color:var(--purple);
+  }
+  .faq-item .dot{
+    flex-shrink:0; width:10px; height:10px; margin-top:9px; border-radius:50%; background:var(--purple);
+  }
+  .faq-item .q-text{flex:1;}
+  .faq-item .icon{
+    margin-left:auto; flex-shrink:0; color:var(--purple); font-size:18px; font-weight:700; transition:transform .2s;
+  }
+  .faq-item.open .icon{transform:rotate(45deg);}
+  .faq-answer{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-answer p, .faq-answer ul{padding-bottom:20px; padding-left:26px; font-size:15px; color:#3a3020; max-width:760px;}
+  .faq-answer ul{margin-top:8px;}
+  .faq-answer li{margin-bottom:6px; padding-left:16px; position:relative;}
+  .faq-answer li::before{content:'—'; position:absolute; left:0; color:var(--purple);}
+
+  /* ---------- final CTA ---------- */
+  .final-cta{ background:var(--purple); color:#fff; border-radius:48px; margin:0 auto 60px; max-width:1200px; padding:80px 40px; text-align:center; }
+  .final-cta h2{font-family:var(--font-bubble); font-size:clamp(28px,5vw,48px); margin-bottom:16px;}
+  .final-cta p{font-size:17px; max-width:560px; margin:0 auto 28px; opacity:0.92; font-weight:500;}
+  .final-cta .cta-btn{background:#fff; color:var(--purple-deep);}
+
+  footer{ background:var(--ink); color:rgba(255,255,255,0.7); padding:36px 0; font-size:14px; }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;}
+  footer a{font-weight:700; color:#fff;}
+
+  .mobile-nav{ display:none; position:fixed; inset:64px 0 0 0; background:var(--cream); z-index:60; padding:30px 24px; flex-direction:column; gap:22px; font-size:20px; font-weight:800; }
+  .mobile-nav.open{display:flex;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><img src="assets/logo-outline.webp" alt="PRODlenka"></div>
+    <nav class="top-links">
+      <a href="#about">О хакатоне</a>
+      <a href="#steps">Как начать</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta">Иду!</a>
+    </nav>
+    <div class="burger" id="burgerBtn" aria-label="Меню"><div></div></div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#about">О хакатоне</a>
+  <a href="#steps">Как начать</a>
+  <a href="#faq">FAQ</a>
+  <a href="#cta">Иду!</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <img class="hero-tag" src="assets/tag-date.webp" alt="10-11 сентября">
+    <img class="hero-hackathon" src="assets/tag-hackathon.webp" alt="Hackathon">
+
+    <div class="hero-title-row">
+      <img src="assets/logo-outline.webp" alt="PRODlenka">
+    </div>
+
+    <div class="hero-visual" id="heroVisual">
+      <img class="frame show" src="assets/hero-0.webp" alt="">
+      <img class="frame" src="assets/hero-1.webp" alt="">
+      <img class="frame" src="assets/hero-2.webp" alt="">
+      <img class="frame" src="assets/hero-3.webp" alt="">
+      <img class="frame" src="assets/hero-4.webp" alt="">
+    </div>
+
+    <div class="hero-highlight">
+      <p>Выходи из рутины дедлайнов, чтобы продлить детство</p>
+    </div>
+
+    <div style="position:relative; z-index:2;">
+      <a class="cta-btn" href="#cta">Иду!</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENTO INFO ============ -->
+<section class="bento" id="about">
+  <div class="wrap">
+    <div class="bento-visual">
+      <img src="assets/bento-blob.webp" alt="">
+      <div class="cell tl"><h3>Выходим во двор</h3><p>10 сентября, 14:00</p></div>
+      <div class="cell tr"><h3>По домам</h3><p>11 сентября, 18:30</p></div>
+      <div class="cell bl"><h3>Кто собирается</h3><p>Каждый сотрудник команды УК и команд-франчайзи кофе и пиццы</p></div>
+      <div class="cell br"><h3>Формат участия</h3><p>Онлайн, оффлайн или гибрид — выбирай свой способ хакатонить</p></div>
+    </div>
+    <div class="bento-simple">
+      <div class="pair" style="margin-bottom:18px;">
+        <div class="row"><h3>Выходим во двор</h3><p>10 сентября, 14:00</p></div>
+        <div class="row"><h3>По домам</h3><p>11 сентября, 18:30</p></div>
+      </div>
+      <div class="pair">
+        <div class="row"><h3>Кто собирается</h3><p>Каждый сотрудник команды УК и команд-франчайзи кофе и пиццы</p></div>
+        <div class="row"><h3>Формат участия</h3><p>Онлайн, оффлайн или гибрид — выбирай свой способ хакатонить</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO TEXT + NOTE ============ -->
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div class="intro-text">
+      <p>Помнишь время, когда выходил во двор <mark>«на полчасика»</mark> и возвращался с закатом солнца?</p>
+      <p>Мы возвращаем это <mark>чувство свободы!</mark> Только теперь вместо дворовых игр у нас продуктовые эксперименты. Зовём тебя <strong>Hackathon PRODlenka</strong>, где можно снова почувствовать беззаботность и свободу делать с друзьями, что хочешь.</p>
+    </div>
+    <div class="sticky-note">
+      <img class="bg" src="assets/note-24h.webp" alt="">
+      <div class="content">
+        <div>Это соревнование, где участники собираются в команды и за <span class="circled">24 часа</span> создают с нуля продукт, приложение, фичу или сервис — все, что бьёт в вау-опыт или решает задачи бизнеса.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHPARGALKA BANNER ============ -->
+<div class="wrap">
+  <div class="banner-wrap">
+    <div class="banner-smiley">☺</div>
+    <div class="banner-note">
+      <span>Если ты никогда не был на хакатоне — <span class="hl">держи шпаргалку</span></span>
+      <span class="arrow">➜</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FINDINGS (YARD) ============ -->
+<section class="findings">
+  <div class="wrap">
+    <div class="title-tape">
+      <img class="tape" src="assets/tape-purple.webp" alt="">
+      <img class="title" src="assets/title-findings.webp" alt="Твои находки после 24 часов во дворе">
+    </div>
+    <div class="findings-grid">
+      <div class="finding-card">
+        <img class="bg" src="assets/note-blank.webp" alt="">
+        <div class="inner">
+          <div class="head"><span class="num">1</span><h4>Новый взгляд на свои возможности</h4></div>
+          <p>Выйдешь за рамки роли и рутинных задач.</p>
+        </div>
+      </div>
+      <div class="finding-card">
+        <img class="bg" src="assets/note-blank.webp" alt="">
+        <div class="inner">
+          <div class="head"><span class="num">2</span><h4>Фича, которую придумал именно ты</h4></div>
+          <p>Сделаешь продукт, который можно выкатить в прод и повлиять на бизнес, гостей или работу своей команды.</p>
+        </div>
+      </div>
+      <div class="finding-card">
+        <img class="bg" src="assets/note-blank.webp" alt="">
+        <div class="inner">
+          <div class="head"><span class="num">3</span><h4>Люди, с которыми захочется делать больше</h4></div>
+          <p>Погрузишься в атмосферу стартапа и познакомишься с коллегами.</p>
+        </div>
+      </div>
+      <div class="finding-card">
+        <img class="bg" src="assets/note-blank.webp" alt="">
+        <div class="inner">
+          <div class="head"><span class="num">4</span><h4>Буря эмоций</h4></div>
+          <p>Получишь опыт, который не забывается, и пак хакатонщика.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAST PROJECTS ============ -->
+<section class="projects section-pad" id="projects">
+  <div class="wrap">
+    <p class="lookback">Если вы сомневаетесь, смотрите, как это было ➜</p>
+    <img class="title-img" src="assets/title-projects.webp" alt="Смотри, что мы наиграли">
+    <img class="tape-sub" src="assets/tape-title-projects.webp" alt="Придумано на хакатонах">
+    <div class="projects-scroll">
+      <div class="project-card">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <p class="desc">Печать фото на чеках</p>
+          <p class="team">Команда: КомPOSизция</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <p class="desc">Инструмент, который помогает быстрее проанализировать результаты теста — симуляция пиццерии в одном окне</p>
+          <p class="team">Команда: Курьер, полка, два серта</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <p class="desc">AI-поиск в приложении Дринкит</p>
+          <p class="team">Команда: Капучинормисы</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="img-placeholder"></div>
+        <div class="body">
+          <p class="desc">Дата-бот по поиску инфы по данным в Лупе</p>
+          <p class="team">Команда: А можно спросить?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEPS ============ -->
+<section class="steps" id="steps">
+  <div class="wrap">
+    <img class="steps-title" src="assets/steps-title.webp" alt="Окей, я выхожу. Что делать?">
+    <div class="steps-grid">
+      <div class="step">
+        <div class="head"><span class="num">1</span><h4>Первым делом загляни в <a href="#" target="_blank" rel="noopener">Telegram Hackathon PRODlenka</a></h4></div>
+        <p>Там собираются все участники, организуются команды и появляются главные новости хакатона.</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="num">2</span><h4>Собери команду</h4></div>
+        <p>Во дворе всегда веселее вместе. Если своей команды еще нет — самое время найти тех, с кем хочется придумать что-то крутое. Ты можешь сделать это сам, кинуть клич в чате или присоединиться к сформированной команде.</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="num">3</span><h4>Зарегистрируй команду в <a href="#" target="_blank" rel="noopener">табличке</a></h4></div>
+        <p>Чтобы мама знала, где ты гуляешь 😄 Мы можем зарегистрировать ограниченное кол-во команд, поэтому записывайся сразу, как соберешь команду. Нужно придумать верхнеуровневую идею, название команды и указать всех участников.</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="num">4</span><h4>Дай волю идеям</h4></div>
+        <p>Можно легально немного «сломать систему»: придумать необычную фичу, проверить смелую гипотезу и сделать то, на что в обычной рутине не хватает времени.</p>
+      </div>
+    </div>
+    <img class="doodles" src="assets/steps-doodles.webp" alt="">
+  </div>
+</section>
+
+<!-- ============ ЦУ-Е-ФА ============ -->
+<section class="cuefa">
+  <div class="wrap">
+    <div class="cuefa-grid">
+      <div>
+        <img class="title-cuefa" src="assets/title-cuefa.webp" alt="Во что играем?">
+        <p class="sub">В данный момент направления хакатона определяют на Цу-е-фа старшаки. Ждём итогов поединка 👀</p>
+        <div class="arrow-wrap"><img src="assets/arrow-curve.webp" alt=""></div>
+      </div>
+      <div class="cuefa-hands-wrap">
+        <img src="assets/cuefa-hands.webp" alt="ЦУ vs Е vs ФА">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GARAGE / JURY ============ -->
+<section class="garage">
+  <div class="wrap">
+    <div class="garage-photo">
+      <img class="bg" src="assets/garage-bg.webp" alt="Старшие во дворе — они же судьи">
+      <div class="garage-bubbles">
+        <img class="blob" src="assets/speech-blob.webp" alt="">
+        <div class="text">
+          <p>Состав жюри пока прячется за гаражами и что-то обсуждает.</p>
+          <p>Как только договорятся — сразу расскажем и вам.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-tape">FAQ</div>
+
+    <div class="faq-item open">
+      <button><span class="dot"></span><span class="q-text">Я никогда не участвовал, с чего начать?</span><span class="icon">+</span></button>
+      <div class="faq-answer" style="max-height:260px;">
+        <p>Есть два вектора:</p>
+        <ul>
+          <li>у тебя уже есть идея, и ты хочешь собрать под неё команду;</li>
+          <li>у тебя нет идеи, но ты готов стать частью команды.</li>
+        </ul>
+        <p>Мы поможем в обоих случаях — добавляйся в чат телеграма.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button><span class="dot"></span><span class="q-text">Надо хакатонить 24 часа?</span><span class="icon">+</span></button>
+      <div class="faq-answer">
+        <p>Мы даём сутки на проработку идеи — но не агитируем вас не спать. Вы регулируете свою работу сами.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button><span class="dot"></span><span class="q-text">А если я онлайн?</span><span class="icon">+</span></button>
+      <div class="faq-answer">
+        <p>Участвовать можно в любом формате — онлайн, оффлайн в московском офисе или гибридной командой. Открытие, защита и награждение будет транслироваться в YouTube. Мы стараемся сделать так, чтобы в любой точке мира вы получили удовольствие и пользу от участия.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button><span class="dot"></span><span class="q-text">Можно не работать во время хакатона?</span><span class="icon">+</span></button>
+      <div class="faq-answer">
+        <p>Для команды ИТ мы договорились с лидерами Додо Инжиниринга о том, что участники могут в это время участвовать в хакатоне (пожалуйста, самостоятельно оценивайте свою работу и загрузку).</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button><span class="dot"></span><span class="q-text">Кто может участвовать?</span><span class="icon">+</span></button>
+      <div class="faq-answer">
+        <p>Хакатон только для сотрудников УК и команды партнёров-франчайзи. Друзья и бывшие коллеги участвовать не могут.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button><span class="dot"></span><span class="q-text">Могу я участвовать без команды?</span><span class="icon">+</span></button>
+      <div class="faq-answer">
+        <p>Участвовать в одиночку можно, но подобный формат редко приводит к значимым результатам. Смысл хакатона в том, чтобы собрать синергию опыта и навыков разных людей в одной команде.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button><span class="dot"></span><span class="q-text">Какую помощь я получу во время хакатона?</span><span class="icon">+</span></button>
+      <div class="faq-answer">
+        <p>Команды будут консультировать менторы — опытные коллеги, которые помогут при необходимости. А ещё организаторы всегда рядом и сориентируют по любому вопросу.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<div class="wrap">
+  <section class="final-cta" id="cta">
+    <h2>Ну что, пошли гулять?</h2>
+    <p>Только не потеряйся по дороге 😄 Всё важное — в Telegram Hackathon PRODlenka: там собираем команды, делимся новостями и готовимся к главной прогулке года.</p>
+    <a class="cta-btn" href="#" target="_blank" rel="noopener">Перейти в Telegram ➜</a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Hackathon PRODlenka · 10–11 сентября</span>
+    <a href="#top">Наверх ↑</a>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('button');
+    const answer = item.querySelector('.faq-answer');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.faq-answer').style.maxHeight = 0;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+  window.addEventListener('load', () => {
+    const openItem = document.querySelector('.faq-item.open .faq-answer');
+    if(openItem) openItem.style.maxHeight = openItem.scrollHeight + 'px';
+  });
+
+  // hero image cycling
+  (function(){
+    const frames = document.querySelectorAll('#heroVisual img.frame');
+    let i = 0;
+    setInterval(() => {
+      frames[i].classList.remove('show');
+      i = (i + 1) % frames.length;
+      frames[i].classList.add('show');
+    }, 2600);
+  })();
+</script>
+
+</body>
+</html>
